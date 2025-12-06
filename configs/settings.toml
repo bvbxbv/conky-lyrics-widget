@@ -5,7 +5,8 @@ fill_lines = 50 # it's works, dont touch it please
 lyrics_area_height = 48 # needed for formatter.print_fill.append
 
 # genius_api settings
-skip_non_songs = true 
+verbose = false
+skip_non_songs = false
 excluded_terms = ["(Remix)", "(Live)"]
 remove_section_headers = true # headers like [BRIDGE] [CHORUS] and so on
 
