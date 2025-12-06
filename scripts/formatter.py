@@ -20,6 +20,7 @@ def print_fill(lines=None, append=""):
 
 # line - result string from playerctl of format band - title
 # transform this string to genius lyric url
+# for example Happy days - don't go -> http://genius.com/happy-days-dont-go-lyrics
 def make_genius_url(line):
     parts = re.split(r"\s*-\s*", line, maxsplit=1)
     artist = parts[0]

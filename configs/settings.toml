@@ -2,7 +2,8 @@
 # scripts settings
 # ======================================================================
 fill_lines = 50 # it's works, dont touch it please
-lyrics_area_height = 48 # needed for formatter.print_fill.append
+# i don't understand why, but 38 working perfectly. Better don't touch
+lyrics_area_height = 38 # needed for formatter.print_fill.append
 
 # genius_api settings
 verbose = false
@@ -17,9 +18,16 @@ skip_if_contains = ["contributors", "contributor", "genius", "http"]
 append_after = " "
 padding_left = 2
 
+[intervals]
+title_update_interval = 3
+time_update_interval = 1
+lyrics_update_interval = 30
+
 [display]
 empty_filler = "~"
 lyrics_not_found = "Не могу найти текст, сорян"
+player_idle = "Может врубишь уже что-нибудь?"
+timer_delimiter = "/"
 
 # ======================================================================
 # conky settings
@@ -38,7 +46,7 @@ own_window_class = "Conky"
 own_window_type = "desktop"
 transparent = false
 argb_visual = true
-argb_value = 200
+argb_value = 220
 bg_color = "#000"
 
 [colors]
@@ -58,3 +66,8 @@ update_interval = 3
 update_interval = 1
 cpu_avg_samples = 4
 net_avg_samples = 4
+
+[sections]
+music_section_title = "Music"
+system_section_title = "System"
+cpu_section_title = "CPU"
