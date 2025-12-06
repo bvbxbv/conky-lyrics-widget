@@ -1,0 +1,59 @@
+# ======================================================================
+# scripts settings
+# ======================================================================
+fill_lines = 50 # it's works, dont touch it please
+lyrics_area_height = 48 # needed for formatter.print_fill.append
+
+# genius_api settings
+skip_non_songs = true 
+excluded_terms = ["(Remix)", "(Live)"]
+remove_section_headers = true # headers like [BRIDGE] [CHORUS] and so on
+
+# your filters
+skip_if_contains = ["contributors", "contributor", "genius", "http"]
+
+[text]
+append_after = " "
+padding_left = 2
+
+[display]
+empty_filler = "~"
+lyrics_not_found = "Не могу найти текст, сорян"
+
+# ======================================================================
+# conky settings
+# ======================================================================
+[window]
+alignment = "top_left"
+gap_x = 0
+gap_y = 0
+width = 460
+height = 1080
+max_width = 460
+background = false
+border_width = 1
+own_window = true
+own_window_class = "Conky"
+own_window_type = "desktop"
+transparent = false
+argb_visual = true
+argb_value = 200
+bg_color = "#000"
+
+[colors]
+default = "#ffffff"
+accent = "#f3f3f3"
+accent_dimmed = "#c8c8c8"
+
+[fonts]
+main = "RobotoMono Nerd Font:size=9"
+header = "RobotoMono Nerd Font:size=9"
+
+[music]
+title_max_length = 48
+update_interval = 3
+
+[system]
+update_interval = 1
+cpu_avg_samples = 4
+net_avg_samples = 4

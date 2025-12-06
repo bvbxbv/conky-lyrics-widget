@@ -1,0 +1,4 @@
+configs/secret.toml
+scripts/__pycache__
+conky.conf.bak
+conky.log
