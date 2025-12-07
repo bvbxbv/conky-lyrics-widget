@@ -1,5 +1,9 @@
 # Conky Lyrics Widget
 
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Platform](https://img.shields.io/badge/platform-Linux-orange?logo=linux)
+
 <p align="center">
 	<a href="docs/screenshots/widget.png">
   <img src="docs/screenshots/music-section.png" width="480" alt="widget look">
