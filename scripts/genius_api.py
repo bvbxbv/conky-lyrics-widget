@@ -7,6 +7,7 @@ def genius_instance():
         raise ValueError("GENIUS_API_KEY not found in secrets.")
     instance = lyricsgenius.Genius(secrets["GENIUS_API_KEY"])
     instance.verbose = settings["verbose"]
+    instance.remove_section_headers = settings["remove_section_headers"]
     instance.skip_non_songs = settings["skip_non_songs"]
     instance.excluded_terms = settings["excluded_terms"]
     return instance
