@@ -2,7 +2,7 @@
 
 <p align="center">
 	<a href="docs/screenshots/widget.png">
-  <img src="docs/screenshots/system-section.png" width="480" alt="widget look">
+  <img src="docs/screenshots/music-section.png" width="480" alt="widget look">
 	</a>
 </p>
 
@@ -27,7 +27,7 @@ sudo dnf install conky playerctl
 2. Clone repository
 
 ```bash
-# i want it to clone in .config directory
+# clone it directly into ~/.config/conky
 git clone https://github.com/bvbxbv/conky-lyrics-widget.git ~/.config/conky
 ```
 
@@ -45,7 +45,7 @@ Pip will install:
 
 4. Genius api settings
     1. First of all you need an api key.<br>
-       Go to [here](https://genius.com/developers) and click on "Create API CLIENT".
+       Go to https://genius.com/developers and click on "Create API CLIENT".
         1. Enter app name (whatever)
         2. Icon url is not required
         3. App website url - i wrote `http://localhost` and it works
@@ -191,13 +191,23 @@ Section titles
 
 ## How it works?
 
--   Conky config file get from `playerctl` all data about track (title, artist, position).
+-   Conky config file get all data about track from `playerctl` (title, artist, position).
 -   Loads from [genius](https://genius.com) with [LyricsGenius](https://github.com/johnwmillr/LyricsGenius) api wrapper lyrics. If script didnt found lyrics its prints `lyrics_not_found` (you can customise it in `configs/settings.toml`)
 -   Displays system info with conky stuffs (RAM/Swap usage, uptime, CPU cores load, and simple graph)
 
 ## Features
 
 -   customizable with `configs/settings.toml`.
+
+## Issues
+
+-   no caching yet. Conky every time launches python script which send api request
+-   desinc between updating track title and lyrics.
+-   conky freezes when script sends api request.
+
+## To do
+
+-   album cover and album name output.
 
 ## Requirements
 
