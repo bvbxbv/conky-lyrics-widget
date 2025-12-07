@@ -1,9 +1,9 @@
 # ======================================================================
 # scripts settings
 # ======================================================================
-fill_lines = 50 # it's works, dont touch it please
-# i don't understand why, but 38 working perfectly. Better don't touch
-lyrics_area_height = 38 # needed for formatter.print_fill.append
+fill_lines = 42 # it's works, dont touch it please
+# i don't understand why, but 42 working perfectly. Better don't touch
+lyrics_area_height = 42 # needed for formatter.print_fill.append
 
 # genius_api settings
 verbose = false
@@ -15,13 +15,13 @@ remove_section_headers = true # headers like [BRIDGE] [CHORUS] and so on
 skip_if_contains = ["contributors", "contributor", "genius", "http"]
 
 [text]
-append_after = " "
+append_before = " "
 padding_left = 2
 
 [intervals]
 title_update_interval = 3
 time_update_interval = 1
-lyrics_update_interval = 30
+lyrics_update_interval = 60
 
 [display]
 empty_filler = "~"
@@ -60,14 +60,9 @@ header = "RobotoMono Nerd Font:size=9"
 
 [music]
 title_max_length = 48
-update_interval = 3
-
-[system]
-update_interval = 1
-cpu_avg_samples = 4
-net_avg_samples = 4
 
 [sections]
 music_section_title = "Music"
 system_section_title = "System"
+memory_section_title = "Memory"
 cpu_section_title = "CPU"
