@@ -1,41 +1,34 @@
 # Conky Lyrics Widget
 
-## About project
+<p align="center">
+	<a href="docs/screenshots/widget.png">
+  <img src="docs/screenshots/system-section.png" width="480" alt="widget look">
+	</a>
+</p>
 
 This is a conky config that displays the title, artist, and lyrics (from [genius.com](https://genius.com/)) of a track, as well as some system data.
 
 # Installation
 
-1. First of all you need conky.
+1. First of all you need conky (and playerctl).
 
 ```bash
 # with apt
 sudo apt update
-sudo apt install conky-all
+sudo apt install conky-all playerctl
 
 # with pacman
-sudo pacman -Syu conky
+sudo pacman -Syu conky playerctl
 
 # with dnf
-sudo dnf install conky
+sudo dnf install conky playerctl
 ```
 
 2. Clone repository
 
 ```bash
 # i want it to clone in .config directory
-# but git will create subdirectory in there
-git clone https://github.com/bvbxbv/conky-lyrics-widget.git ~/.config/conky/
-
-# if your directory is empty you may do this
-cd ~/.config/conky
-git clone https://github.com/bvbxbv/conky-lyrics-widget.git .
-
-# or this (it works anyway)
-
-git clone https://github.com/bvbxbv/conky-lyrics-widget.git /tmp/tmprepo
-mv /tmp/tmprepo/* /tmp/tmprepo/.* ~/.config/conky/
-rm -rf /tmp/tmprepo
+git clone https://github.com/bvbxbv/conky-lyrics-widget.git ~/.config/conky
 ```
 
 3. Install python requirements
@@ -52,9 +45,13 @@ Pip will install:
 
 4. Genius api settings
     1. First of all you need an api key.<br>
-       Go to [here](https://genius.com/developers) and click on "Create API CLIENT". 1. Enter app name (whatever) 2. Icon url is not required 3. App website url - i wrote `http://localhost` and it's works 4. Redirect url is not required
+       Go to [here](https://genius.com/developers) and click on "Create API CLIENT".
+        1. Enter app name (whatever)
+        2. Icon url is not required
+        3. App website url - i wrote `http://localhost` and it works
+        4. Redirect url is not required
     2. Put api key into config file.
-        1. Find `~/config/conky/configs/secret.toml.copy` (or where you clone this repo).
+        1. Find `~/.config/conky/configs/secret.toml.copy` (or where you clone this repo).
         2. Remove `.copy` (`secret.toml.copy` -> `secret.toml`).
         3. Paste your api key instead of `YOUR GENIUS API KEY`.
 
@@ -75,11 +72,12 @@ If you want set conky as startup app:
     2.  Write name of your task (any)
     3.  In textbox "Command" write something like this:
     ```bash
-    # i'm not sure if this works with relative paths
     # if you don't want delay before launching script, then remove "sleep 5;"
     bash -c "sleep 5; conky -c /home/$USER/.config/conky/conky.conf > /home/$USER/.config/conky/conky.log 2>&1"
     ```
 -   Systemd service
+
+    > In this case conky may start earlier than GNOME session
 
     1.  Create unit file with this content
 
@@ -99,12 +97,7 @@ If you want set conky as startup app:
     [Service]
     Type=simple
     User=$USER
-
-    # if you on xorg
     Environment=DISPLAY=:0
-
-    # if you on wayland of xwayland
-    # Environment=DISPLAY=%XDG_DISPLAY%
     ExecStart=/usr/bin/conky -c /home/$USER/.config/conky/conky.conf
     Restart=on-failure
     WorkingDirectory=/home/$USER/.config/conky
@@ -117,7 +110,7 @@ If you want set conky as startup app:
 
     ```bash
     sudo systemctl daemon-reload
-    sudo systemctl --enable --now conky-music.service
+    sudo systemctl enable --now conky-music.service
     ```
 
     3.  Check status (Optional)
@@ -204,13 +197,13 @@ Section titles
 
 ## Features
 
--   customisable with `configs/settings.toml`.
+-   customizable with `configs/settings.toml`.
 
 ## Requirements
 
--   Linux with playerctl
+-   Linux with playerctl installed
 -   Python `3.10.12` (just because i used them)
--   Python packages (i hope you already installed them with pip (it you're not then [install](#installation)))
+-   Python packages (i hope you already installed them with pip (if you're not then [install](#installation)))
     -   [LyricsGenius](https://github.com/johnwmillr/LyricsGenius)
     -   [tomli](https://github.com/hukkin/tomli) (if you have python greater than `3.11` then you good)
 
