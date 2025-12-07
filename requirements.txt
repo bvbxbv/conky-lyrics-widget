@@ -1,0 +1,2 @@
+lyricsgenius>=3.6.1
+tomli>=2.3.0; python_version < "3.11"
