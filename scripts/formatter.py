@@ -3,7 +3,7 @@ from config import settings
 
 
 def format_output(to_display):
-    after = settings["text"]["append_after"] * settings["text"]["padding_left"]
+    after = settings["text"]["append_before"] * settings["text"]["padding_left"]
     print(after + to_display)
 
 
