@@ -138,29 +138,39 @@ If you need more info about conky features and customisation tricks then look at
 
 ### Scripts settings
 
+Options which using only in python scripts.
+
 -   `fill_lines` - number of lines which returns python script.
 -   `lyrics_area_height` - number of lines of track lyrics. `38` works perfectly on 1920x1080
 -   `skip_if_contains` - lyrics may have line `contributors` or links. If it is, then remove that line.
 
 #### LyricsGenius
 
--   `verbose` - better set `false`, because [lyricsgenius](https://github.com/johnwmillr/LyricsGenius) write `starting downloading` and things like that.
--   `skip_non_songs` - better set `false`, because [lyricsgenius](https://github.com/johnwmillr/LyricsGenius) may return not only track (e.g. track list)
+Settings for [LyricsGenius](https://github.com/johnwmillr/LyricsGenius) instance.
+
+-   `verbose` - better set `false`, because [LyricsGenius](https://github.com/johnwmillr/LyricsGenius) write `starting downloading` and things like that.
+-   `skip_non_songs` - better set `false`, because [LyricsGenius](https://github.com/johnwmillr/LyricsGenius) may return not only track (e.g. track list)
 -   `excluded terms` - exclude songs with these words in their title.
 -   `remove_section_header` - remove headers like [CHORUS], [VERSE] and so on
 
 #### text
+
+Settings for text formatting
 
 -   `append_before` - character for indentation (by default it's whitespace).
 -   `padding_left` - number of characters to indent from left.
 
 #### intervals
 
+Update time settings.
+
 -   `title_update_interval` - interval to update track title
 -   `time_update_interval` - interval to update track time (current and length)
 -   `lyrics_update_interval` - interval to call python script. There's no caching yet. That's a problem.
 
 #### display
+
+Output text
 
 -   `empty_filler` - character after indentation. `~` is pretty good.
 -   `lyrics_not_found` - script returns it when page lyrics status is 404.
@@ -179,6 +189,8 @@ These configs can be found on [conky website](https://conky.cc/)
 
 #### sections
 
+Section titles
+
 -   `music_section_title` - title of music info block
 -   `system_section_title` - title of system info block
 -   `memory_section_title` - title of memory info sub block
@@ -187,7 +199,7 @@ These configs can be found on [conky website](https://conky.cc/)
 ## How it works?
 
 -   Conky config file get from `playerctl` all data about track (title, artist, position).
--   Loads from [genius](https://genius.com) with [lyricsgenius](https://github.com/johnwmillr/LyricsGenius) api wrapper lyrics. If script didnt found lyrics its prints `lyrics_not_found` (you can customise it in `configs/settings.toml`)
+-   Loads from [genius](https://genius.com) with [LyricsGenius](https://github.com/johnwmillr/LyricsGenius) api wrapper lyrics. If script didnt found lyrics its prints `lyrics_not_found` (you can customise it in `configs/settings.toml`)
 -   Displays system info with conky stuffs (RAM/Swap usage, uptime, CPU cores load, and simple graph)
 
 ## Features
