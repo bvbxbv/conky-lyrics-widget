@@ -33,9 +33,6 @@ conky.config = {{
 	draw_outline = false,
 	draw_shades = false,
 	extra_newline = false,
-	update_interval = {cfg['system']['update_interval']},
-	cpu_avg_samples = {cfg['system']['cpu_avg_samples']},
-	net_avg_samples = {cfg['system']['net_avg_samples']},
 	use_xft = true,
 	font = '{cfg['fonts']['main']}'
 }}
@@ -54,16 +51,17 @@ echo "$track"
 '}}${{goto 385}}${{execi {cfg['intervals']['time_update_interval']} bash -c 'pos=$(playerctl position 2>/dev/null || echo 0); pos=${{pos%.*}}; printf "%02d:%02d" $((pos/60)) $((pos%60))'}}{cfg['display']['timer_delimiter']}${{execi {cfg['intervals']['time_update_interval']} bash -c 'len=$(playerctl metadata mpris:length 2>/dev/null || echo 0); sec=$((len/1000000)); printf "%02d:%02d" $((sec/60)) $((sec%60))'}}${{color}}
 
 # lyrics
-${{execi {cfg['intervals']['lyrics_update_interval']} sh -c 'playerctl metadata --format "{{{{artist}}}} {{{{title}}}}" | python3 {BASE_DIR}/scripts/run.py | head -n 43'}}
+${{execi {cfg['intervals']['lyrics_update_interval']} sh -c 'playerctl metadata --format "{{{{artist}}}} {{{{title}}}}" | python3 {BASE_DIR}/scripts/run.py | head -n {cfg['fill_lines']}'}}
+
 # system info
 ${{goto 10}}-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-${{goto 24}}${{color {cfg['colors']['accent']}}} System ${{voffset 8}}
+${{goto 24}}${{color {cfg['colors']['accent']}}}{cfg['sections']['system_section_title']}${{voffset 8}}
 ${{goto 24}}OS:        ${{color {cfg['colors']['accent_dimmed']}}}$sysname $nodename $machine  ${{alignr}}${{color {cfg['colors']['accent']}}}
 ${{goto 24}}Kernel:    ${{color {cfg['colors']['accent_dimmed']}}}$kernel
 ${{goto 24}}Uptime:    ${{color {cfg['colors']['accent_dimmed']}}}$uptime
 
-${{goto 24}}${{color {cfg['colors']['accent']}}} Memory ${{voffset 8}}
+${{goto 24}}${{color {cfg['colors']['accent']}}}{cfg['sections']['memory_section_title']}${{voffset 8}}
 ${{goto 24}}${{color {cfg['colors']['accent_dimmed']}}}RAM:  $mem/$memmax ${{alignr}}$memperc% ${{color {cfg['colors']['accent']}}}${{membar 4, 124}}
 ${{goto 24}}Swap: ${{color {cfg['colors']['accent_dimmed']}}}$swap/$swapmax ${{alignr}}$swapperc% ${{color {cfg['colors']['accent']}}}${{swapbar 4, 124}}${{voffset 8}}
 
